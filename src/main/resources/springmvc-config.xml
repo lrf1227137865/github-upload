@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+    <!--扫描控制器-->
+    <context:component-scan base-package="com.lrf.**.controller"/>
+    <context:component-scan base-package="com.lrf.ssm.party.controoller"/>
+<!--    <context:component-scan base-package="com.lrf.ssm.course.controller"/>-->
+    <!--配置视图解释器-->
+    <bean id="viewResolver"
+          class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+<!--        前置（jsp/）-->
+        <property name="prefix" value=""/>
+<!--        后缀（.jsp）-->
+        <property name="suffix" value=".jsp"/>
+    </bean>
+
+    <!--SpringMVC静态资源拦截配置-->
+    <!--配置静态资源的访问映射，此配置中的文件，将不被前端控制器拦截 -->
+    <mvc:resources location="/static/js/" mapping="/js/**" />
+    <mvc:resources location="/static/css/" mapping="/css/**" />
+    <mvc:resources location="/static/img/" mapping="/img/**" />
+<!--    注解驱动-->
+    <mvc:annotation-driven />
+
+
+<!--    &lt;!&ndash;SpringMVC数据类型转换&ndash;&gt;-->
+<!--    &lt;!&ndash;定义⼀个类型转换bean&ndash;&gt;-->
+<!--    <bean id="conversionService"-->
+
+<!--          class="org.springframework.format.support.FormattingConversionServiceFactoryBean">-->
+<!--        <property name="converters">-->
+<!--            &lt;!&ndash; ⾃定义转换器的类名 &ndash;&gt;-->
+<!--            <bean class="com.lrf.ssm.util.DateConverter"></bean>-->
+<!--        </property>-->
+<!--    </bean>-->
+<!--    &lt;!&ndash; 配置注解驱动：在SpringMVC配置⽂件中配置⾃定义转换器 &ndash;&gt;-->
+<!--    <mvc:annotation-driven conversion-service="conversionService"/>-->
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
+
+</beans>

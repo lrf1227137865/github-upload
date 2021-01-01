@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.lrf.ssm.course.dao.CourseMapper">
+
+    <resultMap id="courseResult"
+               type="com.lrf.ssm.course.model.Course">
+        <id column="course_id" property="courseId" jdbcType="INTEGER"/>
+        <result column="course_title" property="courseTitle" jdbcType="VARCHAR"/>
+        <result column="course_code" property="courseCode" jdbcType="VARCHAR"/>
+        <result column="course_type" property="courseType" jdbcType="VARCHAR"/>
+
+        <result column="course_credit" property="courseCredit" jdbcType="VARCHAR"/>
+        <result column="course_hours" property="courseHours" jdbcType="VARCHAR"/>
+        <result column="term" property="term" jdbcType="VARCHAR"/>
+        <result column="course_desc" property="courseDesc" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <insert id="addCourse" parameterType="course">
+        insert into courses(course_title,course_code,course_type,course_credit,course_hours,term,course_desc)
+                values(#{courseTitle},#{courseCode},#{courseType},#{courseCredit},#{courseHours},#{term},#{courseDesc});
+    </insert>
+
+    <delete id="deleteCourse" parameterType="INTEGER">
+        delete from courses where course_id=#{courseId};
+    </delete>
+    
+    <update id="updateCourse" parameterType="course" >
+        update courses set course_title=#{courseTitle},
+                            course_code=#{courseCode},
+                            course_type=#{courseType},
+                            course_credit=#{courseCredit},
+                            course_hours=#{courseHours},
+                            term=#{term},
+                            course_desc=#{courseDesc}
+                        where course_id=#{courseId};
+    </update>
+
+    <select id="findCourseById" parameterType="INTEGER"
+            resultMap="courseResult">
+        select * from courses where course_id=#{courseId};
+    </select>
+
+    <select id="findAllCourse" resultMap="courseResult">
+        select * from courses;
+    </select>
+
+</mapper>
